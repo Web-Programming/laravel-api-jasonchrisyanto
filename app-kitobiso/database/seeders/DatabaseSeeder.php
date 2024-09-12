@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\funding;
+use App\Models\Donation;
+use App\Models\Funding;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Attribute;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        User::factory()->create();
         funding::create([
             'title'=> 'Bantuan Kemanusiaan',
             'desc'=> 'Bantuan untuk korban bencana alam',
@@ -26,7 +28,8 @@ class DatabaseSeeder extends Seeder
             'collected'=> 0,
             'target'=> 1000000,
             'user_id'=> 1,
-        ])
+            
         ]);
+        
     }
 }
