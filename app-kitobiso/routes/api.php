@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FundingController;
 use App\Models\Donation;
@@ -52,6 +53,9 @@ Route::get('/donatur', function(Request $request){
 });
 */
 
+Route::group(['middleware' => 'auth:sanctum'], function(){
+
+
 //API CRUD Funding
 Route::get('/funding', [FundingController::class, 'index']); //get all data
 route::post('/funding', [FundingController::class, 'store']); //create new data
@@ -62,3 +66,11 @@ Route::delete('/funding/{id}', [FundingController::class, 'destory']); //delete 
 //API CRUD Donation
 // Route::get('/donation', 'App\Http\Controllers\DonationController@index');
 Route::apiResource('donation', DonationController::class);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
+});
